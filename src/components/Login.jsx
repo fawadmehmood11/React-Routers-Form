@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setLogin } from "../features/LoginSlice";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -11,19 +8,24 @@ const Login = () => {
   const [checkPassword, setCheckPassword] = useState(false);
 
   const { email, password } = JSON.parse(localStorage.getItem("credentials"));
-
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/users", { replace: true });
+    }
+  }, [isLoggedIn]);
 
   const handleClick = () => {
     if (email === emailInput && password === passwordInput) {
-      dispatch(setLogin());
+      localStorage.setItem("isLoggedIn", true);
       navigate("/users");
       return;
     }
 
     if (!validateEmail(emailInput)) {
-      console.log(invalidEmail);
       setinvalidEmail(true);
     }
 
@@ -31,8 +33,6 @@ const Login = () => {
       setCheckPassword(true);
     }
   };
-
-  // const isDisplay = invalidEmail ? "displayValidation" : "hideValidation";
 
   const displayError = (validation) =>
     validation ? "displayValidation" : "hideValidation";

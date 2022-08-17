@@ -1,14 +1,12 @@
 import "./App.css";
 import Login from "./components/Login";
 import { Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { getLoginValue } from "./features/LoginSlice";
 import Protected from "./components/Protected";
 import User from "./components/User";
 import NothingAvailable from "./components/NothingAvailable";
 
 function App() {
-  const isLoggedIn = useSelector(getLoginValue);
+  localStorage.setItem("isLoggedIn", false);
   return (
     <main className="App">
       <Routes>
@@ -16,7 +14,7 @@ function App() {
         <Route
           path="/users"
           element={
-            <Protected isLoggedIn={isLoggedIn}>
+            <Protected>
               <User />
             </Protected>
           }

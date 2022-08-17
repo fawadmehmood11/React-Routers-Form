@@ -1,17 +1,14 @@
 import React from "react";
 import UserList from "./UserList";
 import { getUsers } from "../data";
-import { useDispatch } from "react-redux";
-import { resetLogin } from "../features/LoginSlice";
 import { useNavigate } from "react-router-dom";
 
 const User = () => {
   const users = getUsers();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogOut = () => {
-    dispatch(resetLogin());
+    localStorage.setItem("isLoggedIn", false);
     navigate("/", { replace: true });
   };
 
