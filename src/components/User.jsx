@@ -1,10 +1,11 @@
 import React from "react";
 import UserList from "./UserList";
-import { getUsers } from "../data";
 import { useNavigate } from "react-router-dom";
+import { getAllUsers } from "../features/usersSlice";
+import { useSelector } from "react-redux";
 
 const User = () => {
-  const users = getUsers();
+  const users = useSelector(getAllUsers);
   const navigate = useNavigate();
 
   const handleLogOut = () => {
