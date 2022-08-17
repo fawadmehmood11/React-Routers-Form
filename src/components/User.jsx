@@ -1,11 +1,13 @@
 import React from "react";
 import UserList from "./UserList";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { getAllUsers } from "../features/usersSlice";
 import { useSelector } from "react-redux";
 
 const User = () => {
   const users = useSelector(getAllUsers);
+  const sortedUsers = [...users].sort((a, b) => a.id - b.id);
+  console.log(sortedUsers);
   const navigate = useNavigate();
 
   const handleLogOut = () => {
@@ -13,7 +15,7 @@ const User = () => {
     navigate("/", { replace: true });
   };
 
-  const usersList = users.map((user) => {
+  const usersList = sortedUsers.map((user) => {
     return <UserList key={user.id} user={user} />;
   });
   return (
@@ -28,10 +30,13 @@ const User = () => {
             <th>Id</th>
             <th>Name</th>
             <th>Descrition</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>{usersList}</tbody>
       </table>
+
+      {/* <Outlet /> */}
     </div>
   );
 };

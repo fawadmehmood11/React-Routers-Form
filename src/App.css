@@ -11,7 +11,8 @@
   align-items: center;
 }
 
-.login {
+.login,
+.editForm {
   max-width: 500px;
   margin: auto;
   padding: 50px;
@@ -77,6 +78,15 @@ input {
 .btn:hover {
   box-shadow: 0 0 15px 0 rgb(17 22 26 / 21%), 0 4px 4px 0 rgb(17 22 26 / 15%),
     0 8px 12px 0 rgb(17 22 26 / 21%);
+}
+
+.btnEdit {
+  width: 70px;
+  height: 30px;
+  font-size: 12px;
+}
+
+textarea {
 }
 
 .displayValidation {
