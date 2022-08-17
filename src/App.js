@@ -9,7 +9,7 @@ import EditUser from "./components/EditUser";
 function App() {
   localStorage.setItem("isLoggedIn", false);
   return (
-    <main className="App">
+    <main className="App flex">
       <Routes>
         <Route path="/" element={<Login />} />
         {/* <Route

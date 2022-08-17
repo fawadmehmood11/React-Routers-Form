@@ -56,14 +56,14 @@ const Login = () => {
   }
 
   return (
-    <div className="login">
+    <div className="container flex">
       <h1>Sign in to your account</h1>
       <p className="introText">
         Build skills for today, tomorrow, and beyond. Education to future-proof
         your career.
       </p>
 
-      <form>
+      <form className="flex">
         <div className="inputWrapper">
           <input
             type="text"

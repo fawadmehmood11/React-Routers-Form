@@ -1,11 +1,11 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { deleteUser } from "../features/usersSlice";
 
 const UserList = ({ user: { avatar, name, id, description } }) => {
   const navigate = useNavigate();
 
   const handleEdit = () => {
-    console.log(id);
     navigate(`edit/${id}`, { replace: true });
   };
 
@@ -21,8 +21,6 @@ const UserList = ({ user: { avatar, name, id, description } }) => {
         <button className="btn btnEdit" onClick={handleEdit}>
           Edit
         </button>
-
-        {/* <Link to={`edit/${id}`}>Edit</Link> */}
       </td>
     </tr>
   );

@@ -30,7 +30,7 @@ const User = () => {
             <th>Id</th>
             <th>Name</th>
             <th>Descrition</th>
-            <th>Action</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>{usersList}</tbody>
